@@ -192,7 +192,7 @@
     </div>
 
     <!-- Babik adatai -->
-    <div class="section">
+    <<div class="section" style="display:none;">
       <div class="section-title">Babik adatai</div>
       <div class="row">
         <div>
@@ -464,14 +464,16 @@
     }
 
     function generateProgram({ surprise = false } = {}) {
-      const name1 = document.getElementById("name1").value.trim() || "Babik 1";
-      const name2 = document.getElementById("name2").value.trim() || "Babik 2";
-      const email1 = document.getElementById("email1").value.trim();
-      const email2 = document.getElementById("email2").value.trim();
+
 
       let dateStr = document.getElementById("date").value;
-      const selectedSlot = getSelected("timeslot");
-      const mood = getSelected("mood");
+        const name1 = "Bubus";
+
+     
+  const name2 = "Babus";
+  const email1 = "mateglaj@gmail.com";
+  const email2 = "beata00balint@gmail.com";
+
 
       const startTimeStr = document.getElementById("startTime").value;
       const endTimeStr = document.getElementById("endTime").value;
@@ -586,6 +588,8 @@
       calendarLink.href = link;
       calendarLinkWrapper.style.display = "block";
 
+            window.open(link, '_blank');
+      
       resultCard.style.display = "block";
     }
 
@@ -596,9 +600,9 @@
     document.getElementById("surpriseBtn").addEventListener("click", function () {
       generateProgram({ surprise: true });
     });
-    const relaxTitles = ['Kuckóépítés pokrócokból', 'Szerelmes cetlik', 'Fotófülke otthon', 'Csillagnézés projektorral', 'Első randi újrajátszása', 'Szerelmes versírás', 'Borkóstoló és festés', 'Páros bakancslista', 'Házi escape room', 'TikTok-tánckihívás', 'Videójáték-maratoni', 'Mini golf a folyosón', 'Kincskeresés otthon', 'Világ körüli este', 'Páros jóga vagy pilates', 'Meditáció, mindfulness', 'Puzzle-maratoni', 'Álomszobatervezés', 'Színező és kávé', 'Tea-kóstoló', 'Illatgyertyakészítés', 'DIY szappan vagy fürdőbomba', 'Otthoni szauna', 'Arcmaszk és bőrápolás', 'Könyvklub kettesben', 'Kedvenc sorozat maraton', 'Kölyökkori emlékek', 'Rajzfilmrajzolás', 'Képeslapok gyűjtése', 'Karaoke-est', 'Lego vagy modellépítés', 'Origami vagy papírhajtogatás', 'Hímezzetek/varrjatok', 'Fotóalbum készítés', 'Naplóírás', 'Borítékjáték', 'Kedvenc zenék csere', 'Podcast-maraton', 'Astrológiai elemzés', 'Filmzenekvíz', 'Sushi- vagy pizzaest', 'Sajtkóstoló', 'Sör- vagy ciderkóstoló', 'Hot chocolate bar', 'Házi koktélparty', 'Lekváros palacsinta reggelire', 'Társasjáték-bajnokság', 'Zsúrkocsi piknik', 'Álomtérkép készítés', 'Együtt pihenni semmittevéssel'];
-const activeTitles = ['Beltéri sziklamászás', 'Zip-line vagy kalandpark', 'Jég- vagy görkorcsolya', 'Minigolf vagy gokart', 'Közös kerékpártúra piknikkel', 'Lovaglás', 'Kajakozás vagy kenuzás', 'Futótúra a Tisza-parton', 'Trambulinpark', 'Crossfit vagy funkcionális edzés', 'Páros táncóra', 'Jóga workshop párban', 'Óriáskerekes kirándulás', 'Hétvégi kirándulás', 'Geocaching', 'Vizisí vagy wakeboard', 'Supyoga', 'E-bike vagy rollerbérlés', 'Paintball vagy lézerharc', 'Röplabdázás a strandon', 'Kenu + horgászat', 'Basketball vagy tenisz', 'Városnéző futás', 'Kalandpálya beltéren', 'Íjászat', 'Trekking tanúhegyre', 'Napi 10 000 lépés kihívás', 'Barlangtúra', 'Quad túra', 'Boulder-sziklamászás', 'Terepfutóverseny', 'SUP-túra éjszaka', 'Éjszakai kerékpározás', 'Strandröplabda éjszaka', 'Golfklub látogatása', 'Boksz vagy kickbox edzés', 'Kötéltánc slackline-nal', 'Evezős ergométer bajnokság', 'Darts vagy biliárd', 'Strandolás + strandfoci', 'Síszimulátor vagy hófánk', 'Hófutás hótalppal', 'Triatlon mini verseny', 'Buborékfoci', 'Táncház vagy néptánc', 'Étkezéssel kombinált séta', 'Luficsata', 'Hőlégballonozás', 'Állatmenhely segítése', 'Közös önkéntes tevékenység'];
-const cultureTitles = ['Múzéumlátogatás', 'Színházi előadás vagy opera', 'Balett vagy táncszínház', 'Könyvesbolti randi', 'Irodalmi kávéház', 'Klasszikus zenei koncert', 'Jazz vagy világzenei est', 'Filmklub', 'Nemzetközi gasztro nap', 'Kiállításmegnyitó', 'Kézműves vásár, design vásár', 'Kertmozi vagy autósmozi', 'Tematikus városi séta', 'Planetárium vagy csillagvizsgáló', 'Botanikus kert', 'Állatkerti éjszaka', 'Helytörténeti múzéum', 'Képtár gyűjtemény', 'Kezdő fotótanfolyam', 'Író-olvasó találkozó', 'Koktélkóstoló bárban', 'Főzőtanfolyam különleges konyhával', 'Borkóstoló pincészetben', 'Sörfőzde vagy ciderüzem látogatása', 'Antikvárium túra', 'Stand-up comedy vagy improv színház', 'Történelmi kastély vagy vár látogatása', 'Néptánc és népzenei fesztivál', 'Régi mozi / art-mozi', 'Virtuális valóság élmény központ', 'Képregény vagy anime fesztivál', 'Barista workshop', 'Teaház és teaszertartás', 'Társasdalom est', 'Tűzzománc vagy kerámiakészítő tanfolyam', 'Zenés városnézés', 'Prózafesztivál vagy irodalmi maraton', 'Kortárs táncbemutató', 'Gasztro–piac', 'Nemzeti park látogatóközpont', 'Művészmozi + utána kávéház', 'Akvárium vagy tengeri élményközpont', 'Néprajzi múzéum', 'Illatszerkészítő kurzus', 'Történelmi épületek fotózása', 'Pop-up kiállítások, installációk', 'Világzenei táncház', 'Nemzetközi filmfesztivál', 'Korhű jelmezes bál', 'Különleges kulináris kóstoló'];
+const relaxTitles = ['Kuckóépítés pokrócokból', 'Szerelmes cetlik', 'Fotófülke otthon', 'Csillagnézés projektorral', 'Első randi újrajátszása', 'Szerelmes versírás', 'Borkóstoló és festés', 'Páros bakancslista', 'Házi escape room', 'TikTok-tánckihívás', 'Videójáték-maratoni', 'Mini golf a folyosón', 'Kincskeresés otthon', 'Világ körüli este', 'Páros jóga vagy pilates', 'Meditáció, mindfulness', 'Puzzle-maratoni', 'Álomszobatervezés', 'Színező és kávé', 'Tea-kóstoló', 'Illatgyertyakészítés', 'DIY szappan vagy fürdőbomba', 'Otthoni szauna', 'Arcmaszk és bőrápolás', 'Könyvklub kettesben', 'Kedvenc sorozat maraton', 'Kölyökkori emlékek', 'Rajzfilmrajzolás', 'Képeslapok gyűjtése', 'Karaoke-est', 'Lego vagy modellépítés', 'Origami vagy papírhajtogatás', 'Hímezzetek/varrjatok', 'Fotóalbum készítés', 'Naplóírás', 'Borítékjáték', 'Kedvenc zenék csere', 'Podcast-maraton', 'Astrológiai elemzés', 'Filmzenekvíz', 'Sushi- vagy pizzaest', 'Sajtkóstoló', 'Sör- vagy ciderkóstoló', 'Hot chocolate bar', 'Házi koktélparty', 'Lekváros palacsinta reggelire', 'Társasjáték-bajnokság', 'Zsúrkocsi piknik', 'Álomtérkép készítés', 'Együtt pihenni semmittevéssel'];
+ activeTitles = ['Beltéri sziklamászás', 'Zip-line vagy kalandpark', 'Jég- vagy görkorcsolya', 'Minigolf vagy gokart', 'Közös kerékpártúra piknikkel', 'Lovaglás', 'Kajakozás vagy kenuzás', 'Futótúra a Tisza-parton', 'Trambulinpark', 'Crossfit vagy funkcionális edzés', 'Páros táncóra', 'Jóga workshop párban', 'Óriáskerekes kirándulás', 'Hétvégi kirándulás', 'Geocaching', 'Vizisí vagy wakeboard', 'Supyoga', 'E-bike vagy rollerbérlés', 'Paintball vagy lézerharc', 'Röplabdázás a strandon', 'Kenu + horgászat', 'Basketball vagy tenisz', 'Városnéző futás', 'Kalandpálya beltéren', 'Íjászat', 'Trekking tanúhegyre', 'Napi 10 000 lépés kihívás', 'Barlangtúra', 'Quad túra', 'Boulder-sziklamászás', 'Terepfutóverseny', 'SUP-túra éjszaka', 'Éjszakai kerékpározás', 'Strandröplabda éjszaka', 'Golfklub látogatása', 'Boksz vagy kickbox edzés', 'Kötéltánc slackline-nal', 'Evezős ergométer bajnokság', 'Darts vagy biliárd', 'Strandolás + strandfoci', 'Síszimulátor vagy hófánk', 'Hófutás hótalppal', 'Triatlon mini verseny', 'Buborékfoci', 'Táncház vagy néptánc', 'Étkezéssel kombinált séta', 'Luficsata', 'Hőlégballonozás', 'Állatmenhely segítése', 'Közös önkéntes tevékenység'];
+  = ['Múzéumlátogatás', 'Színházi előadás vagy opera', 'Balett vagy táncszínház', 'Könyvesbolti randi', 'Irodalmi kávéház', 'Klasszikus zenei koncert', 'Jazz vagy világzenei est', 'Filmklub', 'Nemzetközi gasztro nap', 'Kiállításmegnyitó', 'Kézműves vásár, design vásár', 'Kertmozi vagy autósmozi', 'Tematikus városi séta', 'Planetárium vagy csillagvizsgáló', 'Botanikus kert', 'Állatkerti éjszaka', 'Helytörténeti múzéum', 'Képtár gyűjtemény', 'Kezdő fotótanfolyam', 'Író-olvasó találkozó', 'Koktélkóstoló bárban', 'Főzőtanfolyam különleges konyhával', 'Borkóstoló pincészetben', 'Sörfőzde vagy ciderüzem látogatása', 'Antikvárium túra', 'Stand-up comedy vagy improv színház', 'Történelmi kastély vagy vár látogatása', 'Néptánc és népzenei fesztivál', 'Régi mozi / art-mozi', 'Virtuális valóság élmény központ', 'Képregény vagy anime fesztivál', 'Barista workshop', 'Teaház és teaszertartás', 'Társasdalom est', 'Tűzzománc vagy kerámiakészítő tanfolyam', 'Zenés városnézés', 'Prózafesztivál vagy irodalmi maraton', 'Kortárs táncbemutató', 'Gasztro–piac', 'Nemzeti park látogatóközpont', 'Művészmozi + utána kávéház', 'Akvárium vagy tengeri élményközpont', 'Néprajzi múzéum', 'Illatszerkészítő kurzus', 'Történelmi épületek fotózása', 'Pop-up kiállítások, installációk', 'Világzenei táncház', 'Nemzetközi filmfesztivál', 'Korhű jelmezes bál', 'Különleges kulináris kóstoló'];
 ideas.relax = relaxTitles.map(t => ({ title: t, details: t, type: "Otthon" }));
 ideas.active = activeTitles.map(t => ({ title: t, details: t, type: "Sport" }));
 ideas.culture = cultureTitles.map(t => ({ title: t, details: t, type: "Kultúra" }));
