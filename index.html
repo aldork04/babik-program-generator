@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <title>Babik Programgenerátor Ὁ1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      margin: 24px;
+      max-width: 720px;
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+      padding: 24px 22px 26px;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 1px #6366f1;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+    .row > div {
+      flex: 1;
+    }
+    .section {
+      margin-bottom: 1.1rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 12px;
+      background: #f9fafb;
+    }
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #374151;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.4rem;
+    }
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #fff;
+    }
+    .chip input {
+      margin: 0;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+    }
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .result-card {
+      margin-top: 14px;
+      padding: 12px 13px;
+      border-radius: 14px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      display: none;
+    }
+    .result-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+    .result-line {
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+      color: #374151;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 0.7rem;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #3730a3;
+      margin-right: 4px;
+    }
+    .calendar-link {
+      margin-top: 8px;
+      font-size: 0.85rem;
+    }
+    .calendar-link a {
+      color: #4338ca;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .calendar-link a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Babik Programgenerátor Ὁ1</h1>
+    <div class="subtitle">
+      Közös programok kitalálása és Google Naptár meghívó készítése nektek.
+    </div>
+
+    <!-- Babik adatai -->
+    <div class="section">
+      <div class="section-title">Babik adatai</div>
+      <div class="row">
+        <div>
+          <label>Babik 1 neve</label>
+          <input id="name1" type="text" placeholder="Pl. Anna" />
+        </div>
+        <div>
+          <label>Babik 2 neve</label>
+          <input id="name2" type="text" placeholder="Pl. Bence" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Babik 1 email (Google fíók)</label>
+          <input id="email1" type="email" placeholder="anna@example.com" />
+        </div>
+        <div>
+          <label>Babik 2 email (Google fíók)</label>
+          <input id="email2" type="email" placeholder="bence@example.com" />
+        </div>
+      </div>
+      <div class="hint">
+        A meghívót erre a két email címre próbálja majd „célozni” a Google Naptár.
+      </div>
+    </div>
+
+    <!-- Időzítés -->
+    <div class="section">
+      <div class="section-title">Időpont beállítása</div>
+      <div class="hint">
+        Tudom, hogy 7–17-ig dolgoztok. Hétköznap alapból este, hétvégén napközben tervezünk. 🙂
+      </div>
+
+      <label for="date">Dátum</label>
+      <input id="date" type="date" />
+
+      <div class="hint">Idősáv</div>
+      <div class="radio-group">
+        <label class="chip">
+          <input type="radio" name="timeslot" value="weekday_evening" checked />
+          <span>Hétköznap este (18:00–20:00)</span>
+        </label>
+        <label class="chip">
+          <input type="radio" name="timeslot" value="weekend_day" />
+          <span>Hétvégi napközben (10:00–13:00)</span>
+        </label>
+        <label class="chip">
+          <input type="radio" name="timeslot" value="custom" />
+          <span>Egyedi időpont (beíom lent)</span>
+        </label>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Kezdés (óó:pp)</label>
+          <input id="startTime" type="time" />
+        </div>
+        <div>
+          <label>Befejezés (óó:pp)</label>
+          <input id="endTime" type="time" />
+        </div>
+      </div>
+      <div class="hint">
+        Ha nem adtok meg időt, a választott idősávból számolunk (18–20 vagy 10–13).
+      </div>
+    </div>
+
+    <!-- Program típusa -->
+    <div class="section">
+      <div class="section-title">Milyen hangulatban vagytok?</div>
+      <div class="radio-group">
+        <label class="chip">
+          <input type="radio" name="mood" value="relax" checked />
+          <span>Nyugi otthon 🚚</span>
+        </label>
+        <label class="chip">
+          <input type="radio" name="mood" value="active" />
+          <span>Aktív / sportos 🏊</span>
+        </label>
+        <label class="chip">
+          <input type="radio" name="mood" value="culture" />
+          <span>Kultúra / város 🎮</span>
+        </label>
+        <label class="chip">
+          <input type="radio" name="mood" value="mixed" />
+          <span>Mindegy, jöhet bármi 🎲</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Gombok -->
+    <div class="actions">
+      <button class="btn-primary" id="generateBtn">
+        🎁 Programot kérek
+      </button>
+      <button class="btn-secondary" id="surpriseBtn">
+        🤯 Teljes meglepi (véletlen minden)
+      </button>
+    </div>
+
+    <!-- Eredmény -->
+    <div id="resultCard" class="result-card">
+      <div class="result-title">Babiknak kitalált program 💜</div>
+      <div class="result-line">
+        <span class="tag" id="tagType"></span>
+        <span class="tag" id="tagWhen"></span>
+      </div>
+      <div class="result-line" id="resultTitle"></div>
+      <div class="result-line" id="resultTime"></div>
+      <div class="result-line" id="resultDetails"></div>
+      <div class="calendar-link" id="calendarLinkWrapper" style="display:none;">
+        👉 <a id="calendarLink" href="#" target="_blank" rel="noopener noreferrer">
+          Google Naptár meghívó megnyitása
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      Tipp: tegyétek ki könyvjelzőbe, és amikor nem tudjátok, mit csináljatok, csak nyomjatok rá. 💫
+    </div>
+  </div>
+
+  <script>
+    // Néhány alap programötlet hangulat szerint
+    const ideas = {
+      relax: [
+        {
+          title: "Közös főzés + filmest otthon",
+          details: "Válasszatok ki egy új receptet, főzzetek együtt, utána takaró alatt film vagy sorozat.",
+          type: "Otthon"
+        },
+        {
+          title: "Társasjáték / kártya este",
+          details: "Kapcsoljátok ki a telefonokat, húzzatok egy társast vagy kártyát, és jöhet a Babik-bajnokság.",
+          type: "Otthon"
+        },
+        {
+          title: "Közös wellness otthon",
+          details: "Illatgyertya, forró fürdő vagy zuhany, arcmaszk, tea – mini spa, csak nektek.",
+          type: "Otthon"
+        }
+      ],
+      active: [
+        {
+          title: "Esti séta / light túra a környéken",
+          details: "Keressetek egy kellemes útvonalat, beszélgetessetek, nézzétek a várost vagy a természetet.",
+          type: "Szabadtér"
+        },
+        {
+          title: "Közös edzés / jóga",
+          details: "YouTube-ról egy 30–40 perces páros jóga vagy edzés, utána nyújtás és chill.",
+          type: "Sport"
+        },
+        {
+          title: "Kerékpártúra (ha van bringa)",
+          details: "Tekertjetek el egy kávézóig vagy parkig, útközben pedig jöhet a Babik-tervezés.",
+          type: "Szabadtér"
+        }
+      ],
+      culture: [
+        {
+          title: "Mozi vagy otthoni mozizás tematikusan",
+          details: "Válasszatok egy tematikát (pl. sci-fi, vígjáték, klasszikus), és ahhoz igazítsátok a filmet/filmeket.",
+          type: "Kultúra"
+        },
+        {
+          title: "Kiállítás / múzeum + kávé",
+          details: "Keressetek egy kiállítást a városban, utána menjetek be egy kávézóba megbeszélni az élményt.",
+          type: "Kultúra"
+        },
+        {
+          title: "Könyvesbolt randikör",
+          details: "Menjetek be egy könyvesboltba, válasszatok egymásnak egy könyvet, amit ajánlanátok.",
+          type: "Kultúra"
+        }
+      ]
+    };
+
+    // Random helper
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function getSelected(name) {
+      const el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : null;
+    }
+
+    function pad2(num) {
+      return num.toString().padStart(2, "0");
+    }
+
+    // Dátum formázó Google Naptár linkhez (YYYYMMDDTHHMMSS)
+    function formatForCalendar(date) {
+      const year = date.getFullYear();
+      const month = pad2(date.getMonth() + 1);
+      const day = pad2(date.getDate());
+      const hour = pad2(date.getHours());
+      const minute = pad2(date.getMinutes());
+      const second = pad2(date.getSeconds());
+      return `${year}${month}${day}T${hour}${minute}${second}`;
+    }
+
+    function buildCalendarLink({ title, details, start, end, email1, email2 }) {
+      const base = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+      const text = "&text=" + encodeURIComponent(title);
+      const dates = "&dates=" + formatForCalendar(start) + "/" + formatForCalendar(end);
+      const det = "&details=" + encodeURIComponent(details || "");
+      let add = "";
+      const emails = [email1, email2].filter(Boolean);
+      if (emails.length) {
+        add = "&add=" + emails.map(encodeURIComponent).join(",");
+      }
+      return base + text + dates + det + add;
+    }
+
+    // Idősáv logika: ha nincs explicit time, feltételezünk
+    function getTimeRange(dateStr, timeslot) {
+      const date = dateStr ? new Date(dateStr) : new Date();
+      // Egy kis védelem: időzóna elcsúszást csökkentjük
+      // (dátuminput YYYY-MM-DD, ezt magyar idő szerint értelmezzük)
+      if (dateStr) {
+        const [y, m, d] = dateStr.split("-").map(Number);
+        // hónap 0-indexelt
+        date.setFullYear(y, m - 1, d);
+      }
+
+      let start = new Date(date);
+      let end = new Date(date);
+
+      if (timeslot === "weekday_evening") {
+        start.setHours(18, 0, 0, 0);
+        end.setHours(20, 0, 0, 0);
+      } else if (timeslot === "weekend_day") {
+        start.setHours(10, 0, 0, 0);
+        end.setHours(13, 0, 0, 0);
+      } else {
+        // custom-et majd később kezeljük
+        start.setHours(18, 0, 0, 0);
+        end.setHours(20, 0, 0, 0);
+      }
+      return { start, end };
+    }
+
+    function getCustomTimeRange(dateStr, startTimeStr, endTimeStr, fallbackSlot) {
+      const baseRange = getTimeRange(dateStr, fallbackSlot);
+      if (!startTimeStr || !endTimeStr) return baseRange;
+
+      const [sh, sm] = startTimeStr.split(":").map(Number);
+      const [eh, em] = endTimeStr.split(":").map(Number);
+
+      const start = new Date(baseRange.start);
+      const end = new Date(baseRange.end);
+
+      start.setHours(sh, sm ?? 0, 0, 0);
+      end.setHours(eh, em ?? 0, 0, 0);
+
+      return { start, end };
+    }
+
+    function isWeekend(dateStr) {
+      const date = dateStr ? new Date(dateStr) : new Date();
+      if (dateStr) {
+        const [y, m, d] = dateStr.split("-").map(Number);
+        date.setFullYear(y, m - 1, d);
+      }
+      const day = date.getDay(); // 0 vas, 6 szombat
+      return day === 0 || day === 6;
+    }
+
+    function generateProgram({ surprise = false } = {}) {
+      const name1 = document.getElementById("name1").value.trim() || "Babik 1";
+      const name2 = document.getElementById("name2").value.trim() || "Babik 2";
+      const email1 = document.getElementById("email1").value.trim();
+      const email2 = document.getElementById("email2").value.trim();
+
+      let dateStr = document.getElementById("date").value;
+      const selectedSlot = getSelected("timeslot");
+      const mood = getSelected("mood");
+
+      const startTimeStr = document.getElementById("startTime").value;
+      const endTimeStr = document.getElementById("endTime").value;
+
+      // Ha teljes meglepi, randomizálunk dátumot (következő 10 napon belül) és hangulatot
+      let effectiveMood = mood;
+      if (surprise) {
+        const moods = ["relax", "active", "culture"];
+        effectiveMood = pickRandom(moods);
+
+        const today = new Date();
+        const offsetDays = Math.floor(Math.random() * 10); // 0–9 nap
+        const randDate = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate() + offsetDays
+        );
+        const year = randDate.getFullYear();
+        const month = pad2(randDate.getMonth() + 1);
+        const day = pad2(randDate.getDate());
+        dateStr = `${year}-${month}-${day}`;
+        document.getElementById("date").value = dateStr;
+
+        // Idősávot is igazítjuk hétvége / hétköznap szerint
+        const weekend = isWeekend(dateStr);
+        const slotRadio = document.querySelector(
+          weekend
+            ? 'input[name="timeslot"][value="weekend_day"]'
+            : 'input[name="timeslot"][value="weekday_evening"]'
+        );
+        if (slotRadio) slotRadio.checked = true;
+      }
+
+      // Program kiválasztása
+      let ideaPool;
+      if (effectiveMood === "mixed") {
+        ideaPool = [
+          ...ideas.relax,
+          ...ideas.active,
+          ...ideas.culture
+        ];
+      } else {
+        ideaPool = ideas[effectiveMood] || ideas.relax;
+      }
+
+      const chosen = pickRandom(ideaPool);
+
+      // Idősáv számítás
+      const chosenTimeslot = getSelected("timeslot");
+      let timeRange;
+      if (chosenTimeslot === "custom") {
+        // Hétköznap vagy hétvége alapján fallback
+        const fallbackSlot = isWeekend(dateStr)
+          ? "weekend_day"
+          : "weekday_evening";
+        timeRange = getCustomTimeRange(
+          dateStr,
+          startTimeStr,
+          endTimeStr,
+          fallbackSlot
+        );
+      } else {
+        timeRange = getTimeRange(dateStr, chosenTimeslot);
+        if (startTimeStr && endTimeStr) {
+          timeRange = getCustomTimeRange(
+            dateStr,
+            startTimeStr,
+            endTimeStr,
+            chosenTimeslot
+          );
+        }
+      }
+
+      // Eredmények megjelenítése
+      const resultCard = document.getElementById("resultCard");
+      const tagType = document.getElementById("tagType");
+      const tagWhen = document.getElementById("tagWhen");
+      const resultTitle = document.getElementById("resultTitle");
+      const resultTime = document.getElementById("resultTime");
+      const resultDetails = document.getElementById("resultDetails");
+      const calendarLinkWrapper = document.getElementById("calendarLinkWrapper");
+      const calendarLink = document.getElementById("calendarLink");
+
+      const date = new Date(timeRange.start);
+      const dateStrHu = `${date.getFullYear()}. ${pad2(date.getMonth() + 1)}. ${pad2(date.getDate())}.`;
+
+      const startTimeDisplay = `${pad2(timeRange.start.getHours())}:${pad2(timeRange.start.getMinutes())}`;
+      const endTimeDisplay = `${pad2(timeRange.end.getHours())}:${pad2(timeRange.end.getMinutes())}`;
+
+      tagType.textContent = chosen.type;
+      tagWhen.textContent = isWeekend(dateStr) ? "Hétvégi program" : "Hétköznapi este";
+
+      resultTitle.textContent = `${name1} + ${name2}: ${chosen.title}`;
+      resultTime.textContent = `Időpont: ${dateStrHu} ${startTimeDisplay}–${endTimeDisplay}`;
+      resultDetails.textContent = chosen.details;
+
+      // Google Naptár link
+      const linkTitle = `Babik program: ${chosen.title}`;
+      const linkDetails =
+        `${chosen.details}\n\nRésztvevők: ${name1}, ${name2}\n` +
+        `Generálva a Babik Programgenerátorral. 💜`;
+
+      const link = buildCalendarLink({
+        title: linkTitle,
+        details: linkDetails,
+        start: timeRange.start,
+        end: timeRange.end,
+        email1,
+        email2
+      });
+
+      calendarLink.href = link;
+      calendarLinkWrapper.style.display = "block";
+
+      resultCard.style.display = "block";
+    }
+
+    document.getElementById("generateBtn").addEventListener("click", function () {
+      generateProgram({ surprise: false });
+    });
+
+    document.getElementById("surpriseBtn").addEventListener("click", function () {
+      generateProgram({ surprise: true });
+    });
+  </script>
+</body>
+</html>
